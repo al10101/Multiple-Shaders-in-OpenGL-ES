@@ -7,7 +7,7 @@ I did not find a project that implements different shaders in OpenGL ES for Andr
 
 ## Overview
 
-The main code is inside app/src/main/java/com/albertocabrera/multipleshaders (sorry to make it so "branchy", I forgot the ```gitignore``` file in the initial commit and the complexity of correcting it is not worth it). 
+The main code is inside [app/src/main/java/com/albertocabrera/multipleshaders](app/src/main/java/com/albertocabrera/multipleshaders) (sorry to make it so "branchy", I forgot the ```gitignore``` file in the initial commit and the complexity of correcting it is not worth it). 
 
 The main renderer, Renderer.kt, sets three spheres rotating over the y axis. It calls three different classes: ```ShinnySphere``` (green), ```OpaqueSphere``` (blue) and ```LowPolySphere``` (red). All these classes are child from ```Model3D```, an "empty" class that I created only to override common functions while calling the objects inside ```onDrawFrame()```.
 
@@ -15,4 +15,8 @@ Actually, the same renderer could be achieved by defining various *if* statement
 
 All spheres, refered from now on as models, are defined from scratch, computing every point as a function of *theta* and *phi*. ```LowPolySphere``` has a gradient to emulate the light reflection and make it a little more interesting. To update the light's direction while rotating the models, it also overrides a function ```setMovement()``` a little bit more complex than ```OpaqueSphere``` and ```LowPolySphere```, but it's easy to get once you inderstand the model matrix's transformtions.
 
-The three rendered models use three different shaders, defined inside app/src/main/res/raw. The most important part to make everything work is to use the corresponding program for each model and setting the correct uniforms and attributes per frame, all of which is inside the ```onDrawFrame()``` function inside the renderer.
+The three rendered models use three different shaders, defined inside [app/src/main/res/raw](app/src/main/res/raw). The most important part to make everything work is to use the corresponding program for each model and setting the correct uniforms and attributes per frame, all of which is inside the ```onDrawFrame()``` function inside the renderer.
+
+Finally, the folder [utils](app/src/main/java/com/albertocabrera/multipleshaders/utils) inside the main folder has common functions and constants that are used throughout the whole application, so I suggest to check them while reading every model's method. 
+
+The purpose of this repository is to serve as a guide for those that are having problems implementing various shaders inside a same project, hopefully it will. 
