@@ -15,7 +15,7 @@ Actually, the same renderer could be achieved by defining various *if* statement
 
 All spheres, refered from now on as models, are defined from scratch, computing every point as a function of *theta* and *phi*. ```LowPolySphere``` has a gradient to emulate the light reflection and make it a little more interesting. To update the light's direction while rotating the models, it also overrides a function ```setMovement()``` a little bit more complex than ```OpaqueSphere``` and ```LowPolySphere```, but it's easy to get once you inderstand the model matrix's transformtions.
 
-The folder [utils](app/src/main/java/com/albertocabrera/multipleshaders/utils) inside the [main folder](app/src/main/java/com/albertocabrera/multipleshaders) has common functions and constants that are used throughout the whole application, so I suggest to check them while reading every model's method. I suggest to check them all before reading the methods used in each model.
+The folder [utils](app/src/main/java/com/albertocabrera/multipleshaders/utils) inside the [main folder](app/src/main/java/com/albertocabrera/multipleshaders) has common functions and constants that are used throughout the whole application. I suggest to check them all before reading the methods used in each model.
 
 Finally, all three rendered models use different shaders, defined inside [app/src/main/res/raw](app/src/main/res/raw). The most important part to make everything work is to use the corresponding program for each model and setting the correct uniforms and attributes per frame, all of which is inside the ```onDrawFrame()``` function in the renderer:
 
